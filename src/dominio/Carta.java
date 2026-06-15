@@ -27,4 +27,5 @@ public abstract class Carta {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	public abstract double aceptar(Visitor visitor);
 }
