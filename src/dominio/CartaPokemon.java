@@ -14,6 +14,13 @@ public class CartaPokemon extends Carta{
 	public int getCantEnergias() {
 		return cantEnergias;
 	}
+	
+	public void setDaño(int daño) {
+		this.daño = daño;
+	}
+	public void setCantEnergias(int cantEnergias) {
+		this.cantEnergias = cantEnergias;
+	}
 	@Override
 	public double aceptar(Visitor visitor) {
 		//La carta se manda al visitor
