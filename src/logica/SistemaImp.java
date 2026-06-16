@@ -67,7 +67,9 @@ public class SistemaImp implements Sistema {
 
 	@Override
 	public Carta buscarCarta(String nombre) {
-		// TODO Auto-generated method stub
+		for(Carta c : coleccion) {
+			if(c.getNombre().equalsIgnoreCase(nombre)) return c;
+		}
 		return null;
 	}
 
