@@ -1,36 +1,53 @@
 package logica;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import dominio.Carta;
 
-public class SistemaImp implements Sistema{
-	//Singleton
+public class SistemaImp implements Sistema {
+	// Singleton
 	private static SistemaImp instancia;
-	//Para guardar las Cartas
+	// Para guardar las Cartas
 	private ArrayList<Carta> coleccion;
-	
+	public static Scanner lector;
+
 	private SistemaImp() {
 		coleccion = new ArrayList<Carta>();
 	}
-	
+
 	public static SistemaImp getInstancia() {
-		if(instancia == null) {
-			instancia = new SistemaImp();//Se crea si es que no hay otra instancia ya creada
+		if (instancia == null) {
+			instancia = new SistemaImp();// Se crea si es que no hay otra instancia ya creada
 		}
 		return instancia;
 	}
 
 	@Override
 	public void guardarCartas() {
-		// TODO Auto-generated method stub
-		
+		try {
+			File arch = new File("Datos/Sobres.txt");
+			lector = new Scanner(arch);
+			while (lector.hasNextLine()) {
+				String linea = lector.nextLine();
+				//Manda la linea de texto al factory para que cree el objeto
+				Carta carta = CartaFactory.crearCarta(linea);
+				if(carta != null) {
+					coleccion.add(carta);
+				}
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("Error, no se pudo leer el archivo");
+		}
+
 	}
 
 	@Override
 	public void actualizarCartas() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
