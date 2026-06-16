@@ -52,7 +52,10 @@ public class SistemaImp implements Sistema {
 
 	@Override
 	public boolean agregarCarta(Carta c) {
-		// TODO Auto-generated method stub
+		if(c != null) {
+			coleccion.add(c);
+			return true;
+		}
 		return false;
 	}
 
