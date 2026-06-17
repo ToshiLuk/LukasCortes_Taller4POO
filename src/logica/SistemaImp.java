@@ -61,7 +61,11 @@ public class SistemaImp implements Sistema {
 
 	@Override
 	public boolean eliminarCarta(String nombre) {
-		// TODO Auto-generated method stub
+		Carta carta = buscarCarta(nombre);
+		if(carta != null) {
+			coleccion.remove(carta);
+			return true;
+		}
 		return false;
 	}
 
