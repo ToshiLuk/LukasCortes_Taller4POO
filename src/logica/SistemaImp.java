@@ -79,8 +79,7 @@ public class SistemaImp implements Sistema {
 
 	@Override
 	public ArrayList<Carta> getColeccion() {
-		// TODO Auto-generated method stub
-		return null;
+		return coleccion;
 	}
 
 }
