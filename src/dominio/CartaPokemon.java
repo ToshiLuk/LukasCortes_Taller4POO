@@ -1,5 +1,5 @@
 package dominio;
-
+import Visitor.Visitor;
 public class CartaPokemon extends Carta{
 	private int daño;
 	private int cantEnergias;

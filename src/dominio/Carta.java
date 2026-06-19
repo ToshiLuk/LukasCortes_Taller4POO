@@ -1,5 +1,7 @@
 package dominio;
 
+import Visitor.Visitor;
+
 public abstract class Carta {
 	protected String nombre;
 	protected int rareza;

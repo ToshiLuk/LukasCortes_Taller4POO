@@ -1,5 +1,7 @@
 package dominio;
 
+import Visitor.Visitor;
+
 public class CartaItem extends Carta{
 	private int bonificacion;
 

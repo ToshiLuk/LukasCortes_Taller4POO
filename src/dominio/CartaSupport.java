@@ -1,5 +1,5 @@
 package dominio;
-
+import Visitor.Visitor;
 public class CartaSupport extends Carta{
 	private int efectoPorTurno;
 

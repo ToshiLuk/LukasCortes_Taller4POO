@@ -1,5 +1,7 @@
 package dominio;
 
+import Visitor.Visitor;
+
 public class CartaEnergy extends Carta{
 	private String elemento;
 
