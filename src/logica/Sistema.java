@@ -2,6 +2,7 @@ package logica;
 
 import java.util.ArrayList;
 
+import Strategy.OrdenamientoStrategy;
 import dominio.Carta;
 
 public interface Sistema {
@@ -13,4 +14,6 @@ public interface Sistema {
 	Carta buscarCarta(String nombre);//Buscamos Carta xd
 	
 	ArrayList<Carta> getColeccion();//Devuelve la colección
+	
+	void ordenarColeccion(OrdenamientoStrategy estrategia);
 }

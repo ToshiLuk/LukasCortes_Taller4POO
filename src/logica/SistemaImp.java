@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Strategy.OrdenamientoStrategy;
 import dominio.Carta;
 
 public class SistemaImp implements Sistema {
@@ -80,6 +81,12 @@ public class SistemaImp implements Sistema {
 	@Override
 	public ArrayList<Carta> getColeccion() {
 		return coleccion;
+	}
+
+	@Override
+	public void ordenarColeccion(OrdenamientoStrategy estrategia) {
+		estrategia.ordenar(this.coleccion);
+		
 	}
 
 }
