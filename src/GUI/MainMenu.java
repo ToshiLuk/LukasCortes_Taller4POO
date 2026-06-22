@@ -22,7 +22,17 @@ public class MainMenu {
 		mainMenu.setLocationRelativeTo(null);
 		//Esto me contiene las pestañas
 		JTabbedPane pestañas = new JTabbedPane();
-		pestañaAdmin();
+		//Agrego la pestañas al contenedor
+		pestañas.addTab("Admin", pestañaAdmin());
+		pestañas.addTab("Ver Coleccion", pestañaColeccion());
+		
+		mainMenu.add(pestañas);
+		mainMenu.setVisible(true);
+	}
+	private JPanel pestañaColeccion() {
+		JPanel panelColeccion = new JPanel();
+		panelColeccion.add(new JLabel("PlaceHolderColeccion"));
+		return panelColeccion;
 	}
 	private JPanel pestañaAdmin() {
 		
