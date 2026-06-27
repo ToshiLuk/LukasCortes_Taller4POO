@@ -1,10 +1,11 @@
 package GUI;
 
-import java.awt.Component;
-import java.awt.Font;
+import java.awt.*;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
+import dominio.Carta;
 import logica.Sistema;
 
 public class MainMenu {
@@ -30,9 +31,42 @@ public class MainMenu {
 		mainMenu.setVisible(true);
 	}
 	private JPanel pestañaColeccion() {
-		JPanel panelColeccion = new JPanel();
-		panelColeccion.add(new JLabel("PlaceHolderColeccion"));
+		JPanel panelColeccion = new JPanel(new BorderLayout());
+		JPanel panelParaFiltrar = new JPanel();
+		panelParaFiltrar.add(new JLabel("Ordenar coleccion por:"));
+		//Opciones para luego filtrar
+		String[] opciones = {"Sin Orden", "Nombre", "Rareza", "Poder"};
+		JComboBox<String> filtros = new JComboBox<>(opciones);
+		panelParaFiltrar.add(filtros);
+		
+		String[] columnas = {"Nombre", "Rareza", "Tipo"};
+		DefaultTableModel modeloParaTabla = new DefaultTableModel(columnas, 0);
+		JTable cartasTabla = new JTable(modeloParaTabla);
+		JScrollPane scroll = new JScrollPane(cartasTabla);
+		actualizarTabla(modeloParaTabla);
+		filtros.addActionListener(e ->{
+			String seleccion = (String) filtros.getSelectedItem();
+			if(seleccion.equals("Nombre")) {
+				sistema.ordenarColeccion(new Strategy.OrdenarPorNombre());
+			}else if(seleccion.equals("Rareza")) {
+				sistema.ordenarColeccion(new Strategy.OrdenarPorRareza());
+			}else if(seleccion.equals("Poder")) {
+				sistema.ordenarColeccion(new Strategy.OrdenarPorPoder());
+			}
+			actualizarTabla(modeloParaTabla);
+		});
+		
+		panelColeccion.add(panelParaFiltrar, BorderLayout.NORTH);
+		panelColeccion.add(scroll, BorderLayout.CENTER);
 		return panelColeccion;
+	}
+	private void actualizarTabla(DefaultTableModel modeloParaTabla) {
+		modeloParaTabla.setRowCount(0);
+		for(Carta c : sistema.getColeccion()) {
+			Object[] fila = {c.getNombre(),c.getRareza(),c.getTipo()};
+			modeloParaTabla.addRow(fila);
+		}
+		
 	}
 	private JPanel pestañaAdmin() {
 		

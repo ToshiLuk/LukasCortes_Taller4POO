@@ -6,6 +6,7 @@ import GUI.MainMenu;
 public class App {
 
 	public static void main(String[] args) {
+		//Singleton
 		Sistema sistema = SistemaImp.getInstancia();
 		sistema.guardarCartas();
 		
